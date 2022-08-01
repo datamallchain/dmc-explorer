@@ -1,0 +1,15 @@
+const config = {
+    client: {
+        chainId: '03803e416d091426198bfc490b6122b684ffecd4894d98fb8e2631758c716f47',
+        hostname: "https://explorer.dmctech.io/",
+        port: 443,
+        protocol: 'https',
+        blockchain: 'dmc',
+        searchApi: "/1.1"
+    },
+    openAccount: false,
+    checkAccount: 'dmccpunetuse',
+    contractAccount: "datamall"
+}
+
+module.exports = config
