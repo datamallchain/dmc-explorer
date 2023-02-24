@@ -1,0 +1,13 @@
+{
+  "client": {
+    "chainId": "846dadc224819b7aeca099d55b9f83465eb0a71a5b0bfe30ae8f1ebb39213618",
+    "hostname": "http://154.31.40.10:8870",
+    "port": 8870,
+    "protocol": "https",
+    "blockchain": "dmc",
+    "searchApi": "/1.1"
+  },
+  "openAccount": false,
+  "checkAccount": "dmccpunetuse",
+  "contractAccount": "datamall"
+}

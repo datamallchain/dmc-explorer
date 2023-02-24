@@ -1,0 +1,331 @@
+@white: #ffffff;
+@themeColor: #ff9b3d;
+@themeColor2: #ff9b3d; 
+
+body,
+div,
+ul,
+li,
+ol,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+textarea,
+select,
+p,
+dl,
+dt,
+dd,
+a,
+img,
+button,
+form,
+table,
+th,
+tr,
+td,
+tbody,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: rgb(240, 242, 245);
+}
+
+/* */
+//  .tabs{
+//     background: @white;
+//     margin: 3em;
+//     padding: 1em
+//   }
+
+/*  */
+.account,
+.accountsdetails,
+.reward,
+.transaction,
+.publickey,
+.block {
+  margin: 0px 40px 20px 40px;
+  min-height: 70vh;
+  .creatname {
+    margin-left: 15px;
+  }
+}
+
+.tools {
+  margin: 20px 40px 20px 40px;
+  min-height: 70vh;
+  .creatname {
+    margin-left: 15px;
+  }
+}
+
+.menuIcon {
+  font-size: 18px !important;
+  margin-right: 20px !important;
+}
+
+/*  */
+.tools {
+  .toolsHead {
+    .acount {
+      margin-bottom: 15px;
+    }
+    .progress {
+      display: flex;
+      border-bottom: 1px solid #e8e8e8;
+      padding-bottom: 10px;
+      .ant-progress-line {
+        width: 80%;
+      }
+    }
+    .progressNum {
+      color: @themeColor;
+      font-size: 14px;
+      padding-top: 20px;
+    }
+  }
+  .content {
+    padding-left: 30px;
+    width: 70%;
+  }
+  .transactionID {
+    padding-top: 15px;
+    color: @themeColor;
+  }
+}
+
+@media (max-width: 576px) {
+  .account {
+    .creatname {
+      margin-left: 15px;
+    }
+  }
+}
+
+.logo {
+  text-align: center;
+}
+
+.homeMenu {
+  background: none;
+  border: none;
+  .ant-menu-item {
+    border-bottom: none !important;
+    top: 0;
+    a {
+      color: white !important;
+      background: #23232e;
+      text-align: left;
+      border-radius: 5px;
+      padding-left: 10px;
+    }
+    a:hover {
+      color: @themeColor !important;
+    }
+  }
+  .ant-menu-item-selected {
+    a {
+      color: @themeColor !important;
+    }
+  }
+  .ant-menu-submenu-title {
+    padding: 0px;
+    margin-right: 16px;
+    margin-left: 16px;
+    text-align: left;
+    background: #fff;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    .ant-menu-submenu-arrow {
+      right: 5px;
+    }
+  }
+
+  .ant-menu-submenu-selected {
+    .ant-menu-submenu-title {
+      background: linear-gradient(to right, @themeColor, @themeColor2);
+      color: #fff;
+    }
+  }
+}
+
+.app {
+  .appSider {
+    background: none;
+    .logo {
+      margin-left: 14px;
+      img {
+        width: 37px;
+        height: 37px;
+      }
+      span {
+        margin-left: 14px;
+        width: 106px;
+        height: 21px;
+        font-size: 15px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+        color: #ff9b3d;
+        line-height: 21px;
+      }
+    }
+  }
+  .appHeader {
+    background: @component-background;
+    padding: 0px;
+    width: inherit;
+  }
+  .appContent {
+    margin: 80px 16px 0px;
+    .appContentDiv {
+      padding: 24px;
+      background: @component-background;
+      min-height: 360px;
+    }
+  }
+  .appFooter {
+    text-align: center;
+  }
+}
+
+.linkText {
+  cursor: pointer;
+  color: @themeColor !important;
+}
+
+.removeTip {
+  color: @themeColor;
+  .removeTipTitle {
+    padding-bottom: 10px;
+  }
+}
+
+.lanSelectDropdown {
+  background: #d9d9d9;
+  width: 81px !important;
+}
+
+.parination-area {
+  margin-top: 20px;
+  float: right;
+}
+
+.ant-pagination-item-active:hover a,
+.ant-pagination-item-active:hover,
+.ant-pagination-item-active:focus a,
+.ant-pagination-item-active:focus {
+  color: #ff9b3d !important;
+  border-color: #ff9b3d !important;
+}
+.ant-tabs {
+  background-color: #23232e;
+}
+.ant-progress-success-bg,
+.ant-progress-bg {
+  background-color: @themeColor;
+}
+.ant-tabs-nav .ant-tabs-tab:hover {
+  color: @themeColor;
+}
+.ant-layout,
+.ant-layout * {
+  color: #ffffff;
+}
+a {
+  color: #ff9b3d !important;
+}
+.ant-pagination-item a {
+  color: rgba(255, 255, 255, 0.65) !important;
+}
+.ant-pagination-item a:hover {
+  color: #ff9b3d !important;
+}
+.ant-pagination-item-active a {
+  color: #ff9b3d !important;
+}
+.ant-alert-message {
+  color: rgba(0, 0, 0, 0.65);
+}
+.ant-tag {
+  color: black !important;
+  background: orange;
+  border-color: white;
+}
+.ant-radio-inner {
+  border-color: #d9d9d9;
+}
+.loading {
+  top: 50%;
+  left: 50%;
+  margin-top: 200px;
+  width: inherit;
+  background-color: #30303d;
+  height: 900px;
+}
+.ant-table td {
+  max-width: 95%;
+  word-break: keep-all;
+}
+.ant-table-thead > tr > th,
+.ant-table-tbody > tr > td {
+  background-color: #23232e !important;
+}
+.ant-select-dropdown-menu {
+  background-color: black;
+}
+.ant-select-dropdown-menu-item {
+  background-color: black;
+}
+.variable-row {
+  span {
+    div {
+      color: white !important;
+    }
+    span {
+      color: white !important;
+    }
+  }
+}
+.object-key-val {
+  span {
+    span {
+      span {
+        color: white !important;
+      }
+    }
+  }
+}
+.brace-row {
+  span {
+    color: white !important;
+  }
+}
+// .ant-spin-nested-loading > div > .ant-spin .ant-spin-dot{
+//   width: 100px;
+//   height: 100px;
+// }
+#root,
+.app {
+  height: 100%;
+}
+.ant-layout {
+  min-height: 100%;
+}

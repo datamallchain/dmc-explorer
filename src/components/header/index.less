@@ -1,0 +1,104 @@
+/* header */
+@import "../../App.less";
+
+.ant-layout-header {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  width: calc(100%);
+  z-index: 1;
+  background: @component-background;
+  padding: 0;
+  .ant-form {
+    line-height: 60px;
+  }
+  text-align: center;
+  .logo {
+    float: left;
+    a {
+      color: #000000;
+      text-decoration: none;
+    }
+  }
+
+  .ant-menu-horizontal {
+    width: 100%;
+    margin: auto;
+    height: 64px;
+    line-height: 64px;
+    border-bottom: none;
+  }
+  .smallmenuImg {
+    float: left;
+    width: 32px;
+    margin-top: 20px;
+    margin-right: 20px;
+  }
+  .LronmanName {
+    margin-right: 10px;
+    color: @themeColor;
+    font-size: 12px;
+  }
+  .search {
+    width: 100%;
+    input {
+      color: black;
+      background-color: white;
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px;
+      border: 1px solid @themeColor;
+    }
+    input::placeholder{
+      // width: 143px;
+      height: 21px;
+      font-size: 15px;
+      font-family: PingFangSC-Medium, PingFang SC;
+      font-weight: 500;
+      color: #CCCCCC;
+      line-height: 21px;
+    }
+    button{
+      border-top-right-radius: 15px;
+      border-bottom-right-radius: 15px;
+    }
+    i{
+      margin-right: 10px;
+    }
+  }
+
+  .lanSelect{
+    .ant-select-selection{
+      border: none;
+      box-shadow: none;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .ant-layout-header {
+    .search {
+      margin-left: 40px;
+      width: 125px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .ant-layout-header {
+    .logo {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    .search {
+      margin-left: 40px;
+      width: 150px;
+    }
+  }
+  .ant-menu-submenu-arrow {
+    right: 0 !important;
+  }
+}
+.loginContainer{
+  display: flex;
+  align-items: center;
+}
