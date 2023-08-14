@@ -83,21 +83,6 @@ class Home extends Component {
     }
   };
 
-  getCpuNetPrice = () => {
-    const { config } = this.props;
-    actions.getAccount({ account_name: config.checkAccount }, getAccount => {
-      const { cpu_limit, cpu_weight, net_limit, net_weight } = getAccount;
-      const cpu_total = cpu_limit.max / 1000;
-      const cpu_price = (cpu_weight / 10000 / cpu_total).toFixed(6);
-      const net_total = net_limit.max / 1024;
-      const net_price = (net_weight / 10000 / net_total).toFixed(6);
-      this.setState({
-        cpuprices: cpu_price + " " + this.state.coin + "/MS",
-        netprices: net_price + " " + this.state.coin + "/KB"
-      });
-    });
-  };
-
   getData = () => {
     let url = "/v1/chain/get_info";
     axios
@@ -132,7 +117,6 @@ class Home extends Component {
           coin: rows[0].supply.split(" ")[1]
         });
         this.setVotePercent();
-        this.getCpuNetPrice();
       }
     });
   };

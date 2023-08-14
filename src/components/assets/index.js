@@ -22,12 +22,12 @@ class Assets extends Component {
         quantity.EOS = parseFloat(value.balance.quantity).toFixed(4);
       }
 
-      let reg = RegExp(/FO$/);
-      let regFod = RegExp(/FOD$/);
+      let reg = RegExp(/DMC$/);
+      let regFod = RegExp(/DMCD$/);
       if (regFod.test(value.balance.quantity)) {
-        quantity.FOD = parseFloat(value.balance.quantity).toFixed(4);
+        quantity.DMCD = parseFloat(value.balance.quantity).toFixed(4);
       } else if (reg.test(value.balance.quantity)) {
-        quantity.FO = parseFloat(value.balance.quantity).toFixed(4);
+        quantity.DMC = parseFloat(value.balance.quantity).toFixed(4);
       }
 
       return balance;
@@ -35,7 +35,7 @@ class Assets extends Component {
 
     quantity.EOS = quantity.EOS ? quantity.EOS : 0;
 
-    quantity.FO = quantity.FO ? quantity.FO : 0;
+    quantity.DMC = quantity.DMC ? quantity.DMC : 0;
 
     /*  */
     const resources =
@@ -83,14 +83,14 @@ class Assets extends Component {
       : "";
     const net_max_mb =
       net_max > 10000 ? (net_max * 0.0009766).toFixed(2) : net_max;
-    /* FO bal */
-    const FObalance =
-      resources === '+∞' ? Number(quantity.FO) : Number(quantity.FO) + resources;
+    /* DMC bal */
+    const DMCbalance =
+      resources === '+∞' ? Number(quantity.DMC) : Number(quantity.DMC) + resources;
 
     const resources_percent =
       resources === '+∞'
         ? 100
-        : Number(((resources / FObalance) * 100).toFixed(2));
+        : Number(((resources / DMCbalance) * 100).toFixed(2));
     const ram_percent =
       ram_available === '+∞'
         ? 100
@@ -112,7 +112,7 @@ class Assets extends Component {
               <p className="mortgage">{intl.get('resmortgage')}</p>
               <p className="mortgagenum">
                 <span className="number">{intl.get('quantity')}</span>
-                <span className="fo">{resources + " " + coin} </span>
+                <span className="dmc">{resources + " " + coin} </span>
               </p>
               <div>
                 <Progress percent={resources_percent} status="active" />
@@ -121,7 +121,7 @@ class Assets extends Component {
                 ""
               ) : (
                 <p className="resources">
-                  {resources + " " + coin} / {FObalance.toFixed(4) + " " + coin}
+                  {resources + " " + coin} / {DMCbalance.toFixed(4) + " " + coin}
                 </p>
               )}
             </Card>
@@ -131,7 +131,7 @@ class Assets extends Component {
               <p className="mortgage">{intl.get('mortgageRam')}</p>
               <p className="mortgagenum">
                 <span className="number">{intl.get('curava')}</span>
-                <span className="fo">{ram_available} KB</span>
+                <span className="dmc">{ram_available} KB</span>
               </p>
               <div>
                 <Progress percent={ram_percent} status="active" />
@@ -151,9 +151,9 @@ class Assets extends Component {
               <p className="mortgagenum">
                 <span className="number">{intl.get('curava')}</span>
                 {cpu_available > 10000 ? (
-                  <span className="fo"> {cpu_available_s} S</span>
+                  <span className="dmc"> {cpu_available_s} S</span>
                 ) : (
-                  <span className="fo"> {cpu_available} MS</span>
+                  <span className="dmc"> {cpu_available} MS</span>
                 )}
               </p>
               <div>
@@ -175,9 +175,9 @@ class Assets extends Component {
               <p className="mortgagenum">
                 <span className="number">{intl.get('curava')}</span>
                 {net_available > 10000 ? (
-                  <span className="fo"> {net_available_mb} MB</span>
+                  <span className="dmc"> {net_available_mb} MB</span>
                 ) : (
-                  <span className="fo"> {net_available} KB</span>
+                  <span className="dmc"> {net_available} KB</span>
                 )}
               </p>
               <div>

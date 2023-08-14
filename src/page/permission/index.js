@@ -101,9 +101,9 @@ class PermissionForm extends Component {
           }
         })
         loginIronman(
-          (data, fo, requiredFields) => {
+          (data, dmc, requiredFields) => {
 
-              fo.contract("dmc").then(
+              dmc.contract("dmc").then(
                   contract => {
                       contract.updateauth({
                         account: values.account,

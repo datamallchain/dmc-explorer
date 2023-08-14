@@ -21,12 +21,10 @@ This project is a blockchain project, and the relevant configuration information
 | client.blockchain | Chain name, important! Need to be consistent with the chain name of the chain in the plug-in |
 | client.searchApi | Query interface address used instead of the history service |
 | openAccount | whether open ` account ` menu items, create account and receive drop reward two functions |
-| checkAccount | Account used to determine the cpu mortgage price and network mortgage price, please make sure that the account has been created in the chain, do not use a special account, such as `dmccpunetuse` |
 | contractAccount | Foundation account, the default is `datamall` |
 
 special explanation:
 1. The rpc node service requires a full node turning on the history
-2. checkAccount account is used to obtain CPU and NET price display. It must be created after the new chain, otherwise the price of calculated CPU and NET cannot be read
 
 ## Environmental remarks (2022-03-11)
 | Channel | Production environment | Test environment |

@@ -9,7 +9,7 @@ import HeaderContent from "./components/header/index";
 // import config from "./model/Config";
 import Tool from "./page/tool";
 import { routerConfig } from "./router";
-import config from "./model/config";
+import config, { version } from "./model/config";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -159,6 +159,7 @@ class App extends Component {
                       <Redirect to="/"></Redirect>
                     </Switch>
                   </div>
+                  <div style={{ color: 'transparent', textAlign: 'right' }}>{version}</div>
                 </Suspense>
               </Content>
             </Layout>

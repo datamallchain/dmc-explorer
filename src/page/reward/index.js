@@ -9,7 +9,7 @@ class RewardForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      value: 'FO',
+      value: 'DMC',
     }
   }
 
@@ -18,29 +18,29 @@ class RewardForm extends Component {
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         switch (values.radio) {
-          case 'FO': {
-            actions.getreward(values)
-            break
-          }
-          case 'FOUSDT': {
-            actions.getrewardFod(values)
-            break
-          }
-          case 'CNY': {
-            actions.getrewardCny(values)
-            break
-          }
-          case 'FOETH': {
-            actions.getrewardfoeth(values)
-            break
-          }
-          case 'FOUSDK': {
-            actions.getrewardfousdk(values)
-            break
-          }
-          default: {
-            break
-          }
+            case 'DMC': {
+                actions.getreward(values)
+                break
+            }
+            case 'DMCUSDT': {
+                actions.getrewardFod(values)
+                break
+            }
+            case 'CNY': {
+                actions.getrewardCny(values)
+                break
+            }
+            case 'DMCETH': {
+                actions.getrewardfoeth(values)
+                break
+            }
+            case 'DMCUSDK': {
+                actions.getrewardfousdk(values)
+                break
+            }
+            default: {
+                break
+            }
         }
       }
     })
@@ -67,41 +67,41 @@ class RewardForm extends Component {
       },
     }
     return (
-      <div className="reward">
-        <Form onSubmit={this.handleSubmit}>
-          <Form.Item {...formItemLayout} label={intl.get('account')}>
-            {getFieldDecorator('account', {
-              rules: [
-                {
-                  required: true,
-                  message: intl.get('pleaseinputaccount'),
-                },
-              ],
-              initialValue: this.state.name,
-            })(<Input />)}
-          </Form.Item>
+        <div className='reward'>
+            <Form onSubmit={this.handleSubmit}>
+                <Form.Item {...formItemLayout} label={intl.get('account')}>
+                    {getFieldDecorator('account', {
+                        rules: [
+                            {
+                                required: true,
+                                message: intl.get('pleaseinputaccount'),
+                            },
+                        ],
+                        initialValue: this.state.name,
+                    })(<Input />)}
+                </Form.Item>
 
-          <Form.Item {...formItemLayout} label={intl.get('tokenname')}>
-            {getFieldDecorator('radio', {
-              initialValue: this.state.value,
-            })(
-              <Radio.Group>
-                <Radio value="FO">FO</Radio>
-                <Radio value="FOUSDT">FOUSDT</Radio>
-                <Radio value="CNY">CNY</Radio>
-                <Radio value="FOETH">FOETH</Radio>
-                <Radio value="FOUSDK">FOUSDK</Radio>
-              </Radio.Group>,
-            )}
-          </Form.Item>
+                <Form.Item {...formItemLayout} label={intl.get('tokenname')}>
+                    {getFieldDecorator('radio', {
+                        initialValue: this.state.value,
+                    })(
+                        <Radio.Group>
+                            <Radio value='DMC'>DMC</Radio>
+                            <Radio value='DMCUSDT'>DMCUSDT</Radio>
+                            <Radio value='CNY'>CNY</Radio>
+                            <Radio value='DMCETH'>DMCETH</Radio>
+                            <Radio value='DMCUSDK'>DMCUSDK</Radio>
+                        </Radio.Group>
+                    )}
+                </Form.Item>
 
-          <Form.Item className="buttonArea">
-            <Button type="primary" htmlType="submit">
-              {intl.get('getrewords')}
-            </Button>
-          </Form.Item>
-        </Form>
-      </div>
+                <Form.Item className='buttonArea'>
+                    <Button type='primary' htmlType='submit'>
+                        {intl.get('getrewords')}
+                    </Button>
+                </Form.Item>
+            </Form>
+        </div>
     )
   }
 }

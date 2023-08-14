@@ -7,7 +7,7 @@ export const TradingList = () => {
       data.push({
         key: i,
         id: id,
-        account: `fibosProducer ${i}`,
+        account: `dmcProducer ${i}`,
         contract:  `EosToken ${i+10}`
       });
   }

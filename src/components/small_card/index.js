@@ -37,10 +37,10 @@ class StartCard extends Component {
                     </Col>
                     <Col xs={24} sm={12} md={12} lg={12} xl={12}>
                         <Card title="http&p2p" bordered={false}>
-                            <p style = {{marginBottom: 10}} className = 'p2p'>http://api.testnet.fo ({intl.get('supporthis')})
-                              <a href = 'http://api.testnet.fo/v1/chain/get_info' style = {{marginLeft: 10}}>{intl.get('clickview')}</a>
+                            <p style = {{marginBottom: 10}} className = 'p2p'>http://api.testnet.dmc ({intl.get('supporthis')})
+                              <a href = 'http://api.testnet.dmc/v1/chain/get_info' style = {{marginLeft: 10}}>{intl.get('clickview')}</a>
                             </p>
-                            <p className = 'p2p'>p2p.testnet.fo:80</p>
+                            <p className = 'p2p'>p2p.testnet.dmc:80</p>
                         </Card>
                     </Col>
                     </Row>

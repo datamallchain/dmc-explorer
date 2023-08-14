@@ -135,6 +135,8 @@
   "resource": "資源",
   "actiondetail": "動作詳情",
   "irreversible": "不可逆",
+  "rollback": "回滾",
+  "pending": "待確認",
   "reversible": "可逆",
   "executed": "已執行/不可逆",
   "soft_fail": "已失敗",

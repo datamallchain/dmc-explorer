@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import logo from "../../image/fibos-logo.jpeg";
+import logo from "../../image/logo.png";
 import home from "../../image/home.svg";
 import node from "../../image/node.svg";
 import tool from "../../image/tool.svg";
@@ -20,7 +20,7 @@ import {
   Select,
   Menu,
 } from "antd";
-import Fibos from "fibos.js";
+import Dmc from "dmc.js";
 
 import { routerConfig } from "../../router";
 
@@ -109,16 +109,16 @@ class FormHeader extends Component {
   };
 
   onSearch = (value) => {
-    Fibos.Numeric.prefix = 'DM'
+    // Dmc.Numeric.prefix = 'DM'
     if (value) {
       if (value.length === 64) {
         this.setState({
-          current: "transaction",
-        });
+            current: 'transaction',
+        })
         this.props.history.push({
           pathname: "/transaction/" + value,
         });
-      } else if (Fibos.ecc.isValidPublic(value, 'DM')) {
+      } else if (Dmc.modules.ecc.isValidPublic(value)) {
         this.setState({
           current: "publickey",
         });
@@ -263,7 +263,7 @@ class FormHeader extends Component {
             <div className="appSider">
               <div className="logo">
                 <Link to="/">
-                  <img src={logo} alt="" />
+                  <img width={80} style={{ objectFit: 'contain' }} src={logo} alt="" />
                   <span>DMC Scan</span>
                 </Link>
               </div>
@@ -279,7 +279,7 @@ class FormHeader extends Component {
                 <Menu.Item key="node">
                   <Link to="/node">{intl.get("node")}</Link>
                 </Menu.Item>
-                {this.state.config.openAccount  ? (
+                {this.state.config.openAccount ? (
                   <SubMenu
                     title={
                       <span className="submenu-title-wrapper" key="sub1">

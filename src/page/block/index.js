@@ -68,7 +68,7 @@ class Block extends Component {
   };
 
   componentWillReceiveProps = (nextProps) => {
-    if (nextProps.match.params.blockid !== this.props.match.params.blockid) {
+    // if (nextProps.match.params.blockid !== this.props.match.params.blockid) {
       actions.getBlock(
         { block_num_or_id: nextProps.match.params.blockid },
         (blockdata) => {
@@ -110,7 +110,7 @@ class Block extends Component {
           }
         }
       );
-    }
+    // }
   };
 
   getBlockTransaction = (data, page, pagesize) => {

@@ -2,7 +2,7 @@ import { message } from "antd";
 import axios from "axios";
 import intl from 'react-intl-universal'
 
-export const delegatebw = (fo, values, sucCb) => {
+export const delegatebw = (dmc, values, sucCb) => {
   if (values.from === values.receiver) {
     values.transfer = false
   }
@@ -32,7 +32,7 @@ export const delegatebw = (fo, values, sucCb) => {
       },
     },
   ]
-  fo.transaction(
+  dmc.transaction(
     { actions }, {
     blocksBehind: 3,
     expireSeconds: 30,
@@ -52,7 +52,7 @@ export const delegatebw = (fo, values, sucCb) => {
     });
 };
 
-export const undelegatebw = (fo, values, sucCb) => {
+export const undelegatebw = (dmc, values, sucCb) => {
   let unstake_net_quantity =
     Number(values.stake_net_quantity).toFixed(values.precision) +
     " " +
@@ -77,7 +77,7 @@ export const undelegatebw = (fo, values, sucCb) => {
       },
     },
   ]
-  fo.transaction(
+  dmc.transaction(
     { actions }, {
     blocksBehind: 3,
     expireSeconds: 30,
@@ -126,7 +126,7 @@ export const getPermissions = (data, sucCb) => {
     });
 };
 
-export const buyram = (fo, values, sucCb) => {
+export const buyram = (dmc, values, sucCb) => {
   if (values.tokens === values.coinType) {
     values.quant = Number(values.quant).toFixed(values.precision);
     values.quant = values.quant + " " + values.tokens;
@@ -145,7 +145,7 @@ export const buyram = (fo, values, sucCb) => {
         },
       },
     ]
-    fo.transaction(
+    dmc.transaction(
       { actions }, {
       blocksBehind: 3,
       expireSeconds: 30,
@@ -182,7 +182,7 @@ export const buyram = (fo, values, sucCb) => {
         },
       },
     ]
-    fo.transaction(
+    dmc.transaction(
       { actions }, {
       blocksBehind: 3,
       expireSeconds: 30,
@@ -203,7 +203,7 @@ export const buyram = (fo, values, sucCb) => {
   }
 };
 
-export const sellram = (fo, values, sucCb) => {
+export const sellram = (dmc, values, sucCb) => {
   let bytes = Number(values.bytes);
   const actions = [
     {
@@ -219,7 +219,7 @@ export const sellram = (fo, values, sucCb) => {
       },
     },
   ]
-  fo.transaction(
+  dmc.transaction(
     { actions }, {
     blocksBehind: 3,
     expireSeconds: 30,

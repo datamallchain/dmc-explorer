@@ -68,7 +68,7 @@ class TransferForm extends Component {
       if (!err) {
         this.setState({ loading: true });
         loginIronman(
-          (data, fo) => {
+          (data, dmc) => {
             if (values.tokens) {
               coinTypes.map((item, index) => {
                 if (item.token === values.tokens) {
@@ -77,7 +77,7 @@ class TransferForm extends Component {
                 return false;
               });
             }
-            transfer(fo, values, (data) => {
+            transfer(dmc, values, (data) => {
               if (data && data?.transaction_id) {
                 this.setState({
                   result: data?.transaction_id,

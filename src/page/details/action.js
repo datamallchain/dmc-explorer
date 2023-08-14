@@ -61,6 +61,15 @@ export const getTokenActions = (
                           account_to_id: "${reqMessage.account}"
                         }
                       ]
+                    },
+                    {
+                      and: [
+                        {
+                          contract_action: {
+                            ne: "dmc.token/billsnap",
+                          }
+                        },
+                      ]
                     }
                 ]
             },
@@ -87,7 +96,7 @@ export const getTokenActions = (
       }
       id
     }
-  }`;
+  }`
   const count_params = `{
     count_tokens_action(
       where: {
@@ -101,11 +110,20 @@ export const getTokenActions = (
                   account_to_id: "${reqMessage.account}"
                 }
               ]
+            },
+            {
+              and: [
+                {
+                  contract_action: {
+                    ne: "dmc.token/billsnap",
+                  }
+                },
+              ]
             }
         ]
       },
     )
-  }`;
+  }`
   gpost(config.client.searchApi, params)
     .then(res => {
       if (res && res.find_tokens_action) {

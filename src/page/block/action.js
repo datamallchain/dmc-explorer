@@ -37,7 +37,7 @@ export const getBlockTransaction = (
 ) => {
   const reqMessage = { ...data };
   const params = `{
-    find_fibos_transactions(
+    find_dmc_transactions(
       order: "-createdAt"
             skip: ${(page - 1) * pagesize},
             limit: ${pagesize},
@@ -45,6 +45,15 @@ export const getBlockTransaction = (
                 and:[
                     {
                       producer_block_id: "${reqMessage.id}"
+                    },
+                    {
+                      and: [
+                        {
+                          contract_action: {
+                            ne: "dmc/onblock",
+                          }
+                        }
+                      ]
                     }
                 ]
             },
@@ -57,24 +66,33 @@ export const getBlockTransaction = (
       createdAt
       updatedAt
     }
-  }`;
+  }`
 
   const count_params = `{
-    count_fibos_transactions(
+    count_dmc_transactions(
       where: {
         and:[
             {
               producer_block_id: "${reqMessage.id}"
+            },
+            {
+              and: [
+                {
+                  contract_action: {
+                    ne: "dmc/onblock",
+                  }
+                }
+              ]
             }
         ]
       },
     )
-  }`;
+  }`
   gpost(config.client.searchApi, params)
     .then(res => {
-      if (res && res.find_fibos_transactions) {
+      if (res && res.find_dmc_transactions) {
         if (!!sucCb) {
-          sucCb(res.find_fibos_transactions);
+          sucCb(res.find_dmc_transactions);
         }
       }
     })
@@ -82,9 +100,9 @@ export const getBlockTransaction = (
 
   gpost(config.client.searchApi, count_params)
     .then(res => {
-      if (res && res.count_fibos_transactions) {
+      if (res && res.count_dmc_transactions) {
         if (!!countSucCb) {
-          countSucCb(res.count_fibos_transactions);
+          countSucCb(res.count_dmc_transactions);
         }
       }
     })

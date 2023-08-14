@@ -1,6 +1,5 @@
 import { message } from 'antd'
 import Dmc from 'dmc.js'
-import Fibos from 'fibos.js'
 import intl from "react-intl-universal";
 
 export const loginIronman = (sucCb, noIronman, config) => {
@@ -9,7 +8,7 @@ export const loginIronman = (sucCb, noIronman, config) => {
       noIronman()
     } else {
       message.info(intl.get("checkplugintip1"))
-      // window.open('https://wallet.fo/')
+      // window.open('https://wallet.dmc/')
     }
   } else {
     const ironman = window.dmcironman
@@ -19,7 +18,7 @@ export const loginIronman = (sucCb, noIronman, config) => {
     // 
     // window.dmcironman = null;
     // If you want to require a specific version of Scatter
-    const foNetwork = {
+    const dmcNetwork = {
       blockchain: blockchain,
       chainId: config.client.chainId,
       host: hostname,
@@ -27,35 +26,35 @@ export const loginIronman = (sucCb, noIronman, config) => {
       protocol: config.client.protocol,
     }
 
-    const RequirefoNetwork = {
+    const RequiredmcNetwork = {
       blockchain: blockchain,
       chainId: config.client.chainId,
     }
     ironman
       .getIdentity({
-        accounts: [RequirefoNetwork],
+        accounts: [RequiredmcNetwork],
       })
       .then(identity => {
         const account = identity.accounts.find(acc => acc.blockchain === blockchain)
         const { name, authority } = account
-        // FO
-        const foOptions = {
+        // DMC
+        const dmcOptions = {
           authorization: [`${name}@${authority}`],
           broadcast: true,
           chainId: config.client.chainId,
         }
-        // FO instance
-        // const fo = ironman.fibos(() =>{
-        //     return foNetwork, Fibos, foOptions, "http"
+        // DMC instance
+        // const dmc = ironman.dmc(() =>{
+        //     return dmcNetwork, Dmc, dmcOptions, "http"
         // })
 
-        const fo = ironman[blockchain](foNetwork, Dmc, foOptions, config.client.protocol)
+        const dmc = ironman[blockchain](dmcNetwork, Dmc, dmcOptions, config.client.protocol)
         const requiredFields = {
-          accounts: [foNetwork],
+          accounts: [dmcNetwork],
         }
 
         if (sucCb) {
-          sucCb(ironman, fo, requiredFields, account, foNetwork, identity)
+          sucCb(ironman, dmc, requiredFields, account, dmcNetwork, identity)
         }
       })
       .catch(e => {
@@ -90,7 +89,7 @@ export function logoutIronman(sucCb) {
 export function loadIronman(sucCb, config) {
   if (!window.dmcironman) {
     message.info(intl.get("checkplugintip1"))
-    // window.open('https://wallet.fo/')
+    // window.open('https://wallet.dmc/')
   } else {
     const hostname = new URL(config.client.hostname).hostname
     const ironman = window.dmcironman
@@ -98,7 +97,7 @@ export function loadIronman(sucCb, config) {
     // 
     // window.dmcironman = null;
     // If you want to require a specific version of Scatter
-    const foNetwork = {
+    const dmcNetwork = {
       blockchain: blockchain,
       chainId: config.client.chainId,
       host: hostname,
@@ -106,33 +105,33 @@ export function loadIronman(sucCb, config) {
       protocol: config.client.protocol,
     }
 
-    const RequirefoNetwork = {
+    const RequiredmcNetwork = {
       blockchain: blockchain,
       chainId: config.client.chainId,
     }
 
     ironman
       .getIdentity({
-        accounts: [RequirefoNetwork],
+        accounts: [RequiredmcNetwork],
       })
       .then(identity => {
         const account = identity.accounts.find(acc => acc.blockchain === blockchain)
         const { name, authority } = account
         // 
-        const foOptions = {
+        const dmcOptions = {
           authorization: [`${name}@${authority}`],
           broadcast: true,
           chainId: config.client.chainId,
         }
 
-        // FO instance
-        const fo = ironman[blockchain](foNetwork, Fibos, foOptions, config.client.protocol)
+        // DMC instance
+        const dmc = ironman[blockchain](dmcNetwork, Dmc, dmcOptions, config.client.protocol)
         const requiredFields = {
-          accounts: [foNetwork],
+          accounts: [dmcNetwork],
         }
 
         if (sucCb) {
-          sucCb(ironman, fo, requiredFields, account, foNetwork, identity)
+          sucCb(ironman, dmc, requiredFields, account, dmcNetwork, identity)
         }
       })
       .catch(e => {

@@ -109,10 +109,10 @@ class ResourceForm extends Component {
         values.coinType = this.state.coinType;
         values.precision = this.state.precision;
         loginIronman(
-          (data, fo) => {
+          (data, dmc) => {
             if (this.state.value === "mortgage") {
               values.transfer = this.state.transfer;
-              delegatebw(fo, values, data => {
+              delegatebw(dmc, values, data => {
                 if (data && data.transaction_id) {
                   this.setState({
                     result: data.transaction_id,
@@ -123,7 +123,7 @@ class ResourceForm extends Component {
             }
 
             if (this.state.value === "remove") {
-              undelegatebw(fo, values, data => {
+              undelegatebw(dmc, values, data => {
                 if (data && data.transaction_id) {
                   this.setState({
                     result: data.transaction_id,
@@ -133,7 +133,7 @@ class ResourceForm extends Component {
               });
             }
             if (this.state.value === "buy") {
-              buyram(fo, values, data => {
+              buyram(dmc, values, data => {
                 if (data && data.transaction_id) {
                   this.setState({
                     result: data.transaction_id,
@@ -144,7 +144,7 @@ class ResourceForm extends Component {
             }
 
             if (this.state.value === "sell") {
-              sellram(fo, values, data => {
+              sellram(dmc, values, data => {
                 if (data && data.transaction_id) {
                   this.setState({
                     result: data.transaction_id,

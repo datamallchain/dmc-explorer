@@ -282,11 +282,11 @@ class AccountDetails extends Component {
           const content = text.split(",")
           return <div>
             {content.map((i, index) => {
-              const item = i ? 
+              const item = i ?
                 i.indexOf("@") !== -1 ?
-                `${i.split("@")[0]}@active` 
-                : i
-              : "";
+                  `${i.split("@")[0]}@active`
+                  : i
+                : "";
               return index > 0 ? <div key={index}><Divider /><div>{item}</div></div> : <div key={index}>{item}</div>
             })}
           </div>
@@ -444,31 +444,31 @@ class AccountDetails extends Component {
               </span>
             </h3>
           </div>
-        <div className="currency">
-          <Collapse defaultActiveKey={["1"]}>
-            <Panel header={intl.get("asset")} key="1">
-              <Row gutter={16}>
-                {this.state.Tokens.map((value, index) => {
-                  return (
-                    <Col xs={24} sm={12} md={12} lg={6} xl={6} key={index}>
-                      <Card
-                      // title={`${intl.get("quantity")}：${
-                      //   value.balance.quantity
-                      // }`}
-                      >
-                        {`${intl.get("quantity")}：${value.balance.quantity
-                          }`}
-                        {/* <p>{`${intl.get("issuer")}：${
+          <div className="currency">
+            <Collapse defaultActiveKey={["1"]}>
+              <Panel header={intl.get("asset")} key="1">
+                <Row gutter={16}>
+                  {this.state.Tokens.map((value, index) => {
+                    return (
+                      <Col xs={24} sm={12} md={12} lg={6} xl={6} key={index}>
+                        <Card
+                        // title={`${intl.get("quantity")}：${
+                        //   value.balance.quantity
+                        // }`}
+                        >
+                          {`${intl.get("quantity")}：${value.balance.quantity
+                            }`}
+                          {/* <p>{`${intl.get("issuer")}：${
                           value.balance.contract
                         }`}</p> */}
-                      </Card>
-                    </Col>
-                  );
-                })}
-              </Row>
-            </Panel>
-          </Collapse>
-        </div>
+                        </Card>
+                      </Col>
+                    );
+                  })}
+                </Row>
+              </Panel>
+            </Collapse>
+          </div>
           <div className="detailsResource">
             <Collapse defaultActiveKey={["1"]}>
               <Panel header={intl.get("resource")} key="1">
@@ -492,7 +492,7 @@ class AccountDetails extends Component {
           <Collapse defaultActiveKey={["1"]}>
             <Panel header={intl.get("lockedtoken")} key="1">
               <Row gutter={16}>
-                {this.state.LockUp.map((value, index) => {
+                {this.state.LockUp.filter(e => e.balance?.contract === 'datamall' && e.balance?.quantity?.split(' ')[1] !== 'PST').map((value, index) => {
                   const lock_timestamp = util.formatDateTime(
                     value.lock_timestamp + "Z"
                   );
@@ -531,9 +531,9 @@ class AccountDetails extends Component {
           <h4>
             {intl.get("oriinfo")}（{intl.get("clickroot")}）
           </h4>
-          <ReactJson 
-            src={this.state.data} 
-            collapsed={true} 
+          <ReactJson
+            src={this.state.data}
+            collapsed={true}
           />
         </div>
 

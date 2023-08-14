@@ -3,7 +3,7 @@ import axios from "axios";
 import util from "../../model/util";
 import intl from 'react-intl-universal'
 
-export const newaccount = (fo, values, sucCb) => {
+export const newaccount = (dmc, values, sucCb) => {
   values.transfer === false ? (values.transfer = 0) : (values.transfer = 1);
   let stake_net_quantity =
     Number(values.stake_net_quantity).toFixed(values.precision ? values.precision : 4) + " " + values.coinType;
@@ -54,7 +54,7 @@ export const newaccount = (fo, values, sucCb) => {
       },
     }
   ]
-  fo.transaction({ actions }, {
+  dmc.transaction({ actions }, {
     blocksBehind: 3,
     expireSeconds: 30,
   })

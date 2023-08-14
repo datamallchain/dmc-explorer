@@ -12,10 +12,11 @@ class Transaction extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      transaction: {},
-      actionDataList: [],
-      transactionId: this.props.match.params.trxid,
-    };
+        transaction: {},
+        actionDataList: [],
+        transactionId: this.props.match.params.trxid,
+        last_irreversible_block_num: "",
+    }
   }
 
   componentWillMount = () => {
@@ -45,10 +46,18 @@ class Transaction extends Component {
       },
       config
     );
+    actions.getInfo((data) => {
+        if (data.last_irreversible_block_num) {
+            this.setState({
+                last_irreversible_block_num:
+                    data.last_irreversible_block_num,
+            })
+        }
+    })
   };
 
   componentWillReceiveProps = (nextProps) => {
-    if (nextProps.match.params.trxid !== this.props.match.params.trxid) {
+    // if (nextProps.match.params.trxid !== this.props.match.params.trxid) {
       let actionData = [];
       message.loading(intl.get("inSearching"));
       actions.getTransaction(
@@ -70,7 +79,14 @@ class Transaction extends Component {
         },
         this.props.config
       );
-    }
+      actions.getInfo((data) => {
+          if (data.last_irreversible_block_num) {
+              this.setState({
+                  last_irreversible_block_num: data.last_irreversible_block_num,
+              })
+          }
+      })
+    // }
   };
 
   goToBlock = (block_num) => {
@@ -80,20 +96,31 @@ class Transaction extends Component {
   };
 
   showStatus = (status) => {
-    switch (status) {
-      case "executed":
-        return <Tag color="green">{intl.get("executed")}</Tag>;
-      case "soft_fail":
-        return <Tag color="red">{intl.get("soft_fail")}</Tag>;
-      case "hard_fail":
-        return <Tag color="red">{intl.get("hard_fail")}</Tag>;
-      case "delayed":
-        return <Tag color="orange">{intl.get("delayed")}</Tag>;
-      case "expired":
-        return <Tag color="gree">{intl.get("expired")}</Tag>;
-      default:
-        break;
+    console.log(
+        this.state.transaction.block_num,
+        this.state.last_irreversible_block_num
+    )
+    if (status === "noreversible") {
+          return <Tag color='green'>{intl.get('executed')}</Tag>
+    } else if (this.state.transaction.block.block_num <= this.state.last_irreversible_block_num) {
+          return <Tag color='red'>{intl.get('rollback')}</Tag>
+    } else if (this.state.transaction.block.block_num > this.state.last_irreversible_block_num) {
+          return <Tag color='yellow'>{intl.get('pending')}</Tag>
     }
+    // switch (status) {
+    //   case "executed":
+    //     return <Tag color="green">{intl.get("executed")}</Tag>;
+    //   case "soft_fail":
+    //     return <Tag color="red">{intl.get("soft_fail")}</Tag>;
+    //   case "hard_fail":
+    //     return <Tag color="red">{intl.get("hard_fail")}</Tag>;
+    //   case "delayed":
+    //     return <Tag color="orange">{intl.get("delayed")}</Tag>;
+    //   case "expired":
+    //     return <Tag color="gree">{intl.get("expired")}</Tag>;
+    //   default:
+    //     break;
+    // }
   };
 
   render() {
@@ -162,7 +189,7 @@ class Transaction extends Component {
               <div className="content">
                 <div className="status">
                   {transaction && transaction.rawData
-                    ? this.showStatus(transaction.rawData.receipt.status)
+                    ? this.showStatus(transaction?.block?.status)
                     : ""}
                 </div>
               </div>

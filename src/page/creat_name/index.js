@@ -80,9 +80,9 @@ class creatAcountForm extends Component {
         values.coinType = this.state.coinType;
         values.precision = this.state.precision;
         loginIronman(
-          (data, fo) => {
+          (data, dmc) => {
             values.transfer = this.state.transfer;
-            newaccount(fo, values, data => {
+            newaccount(dmc, values, data => {
               if (data && data.transaction_id) {
                 this.setState({
                   result: data.transaction_id,

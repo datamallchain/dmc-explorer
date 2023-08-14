@@ -3,7 +3,7 @@ import axios from "axios";
 import intl from "react-intl-universal";
 import util from "../../model/util";
 
-export const transfer = (fo, values, sucCb) => {
+export const transfer = (dmc, values, sucCb) => {
   values.quantity = Number(values.quantity).toFixed(
     values.precision ? values.precision : 4
   );
@@ -25,7 +25,7 @@ export const transfer = (fo, values, sucCb) => {
       },
     },
   ]
-  fo.transaction(
+  dmc.transaction(
     { actions }, {
     blocksBehind: 3,
     expireSeconds: 30,

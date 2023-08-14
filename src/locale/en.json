@@ -135,6 +135,8 @@
   "resource": "Resources",
   "actiondetail": "info",
   "irreversible": "Irreversible",
+  "rollback": "rollback",
+  "pending": "pending",
   "reversible": "pending irreversibility",
   "executed": "Executed/Irreversible",
   "soft_fail": "Soft Fail",
